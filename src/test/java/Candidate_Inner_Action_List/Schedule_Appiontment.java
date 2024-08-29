@@ -1,4 +1,4 @@
-package JobOrder_Inner_Action_List;
+package Candidate_Inner_Action_List;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -43,7 +43,7 @@ public class Schedule_Appiontment {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//*[@data-form='interview']")).click();
 		
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		WebElement interviewType = driver.findElement(By.xpath("//*[@name='communication_method']"));
 		Select communicationType = new Select(interviewType);
 		communicationType.selectByVisibleText("Live");
@@ -84,6 +84,37 @@ public class Schedule_Appiontment {
 		meridian1.clear();
 		meridian1.sendKeys("PM");
 		
+		WebElement scrollTo = driver.findElement(By.className("fileuploader-input-button"));
+		js.executeScript("arguments[0].scrollIntoView(true);", scrollTo);
+		Thread.sleep(1000);
+		WebElement comment_iframe = driver.findElement(By.className("cke_wysiwyg_frame"));
+		driver.switchTo().frame(comment_iframe); // Switch to IFrame
+		WebElement inside_iframe = driver.findElement(By.xpath("/html/body"));
+		inside_iframe.click();
+		Thread.sleep(1000);
+		inside_iframe.sendKeys("Testing Add Note inner list"); // Comments
+		driver.switchTo().defaultContent();
+		
+		WebElement chkBoxEmail = driver.findElement(By.xpath("//*[@data-module-status-trigger-id='504']"));
+		js.executeScript("arguments[0].scrollIntoView(true);", chkBoxEmail);
+		if(!chkBoxEmail.isSelected())
+			chkBoxEmail.click();
+		
+		driver.findElement(By.xpath("//*[@name='trigger_subject_504']")).sendKeys(" Successfully");
+		
+		WebElement emailTemplate = driver.findElement(By.className("userEmailTemplatesListtrigger_504"));
+		Select email_Template = new Select(emailTemplate);
+		email_Template.selectByVisibleText("Template 3");
+		Thread.sleep(1000);
+		
+		WebElement emailTag = driver.findElement(By.className("emailTemplateTagsList"));
+		Select email_Tag = new Select(emailTag);
+		email_Tag.selectByVisibleText("Candidate Name");
+		
+		Thread.sleep(1000);
+		
+		
+		driver.findElement(By.xpath("//*[@id=\"AppointmentTabForm\"]/div[37]/input")).click();
 	}
 
 }
