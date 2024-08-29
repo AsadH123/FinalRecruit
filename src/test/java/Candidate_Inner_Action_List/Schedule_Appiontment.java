@@ -82,7 +82,7 @@ public class Schedule_Appiontment {
 		minute1.sendKeys("30");
 		WebElement meridian1 = driver.findElement(By.cssSelector("div div.open table tbody tr td input[name='meridian']"));
 		meridian1.clear();
-		meridian1.sendKeys("PM");
+		meridian1.sendKeys("PM"); 
 		
 		WebElement scrollTo = driver.findElement(By.className("fileuploader-input-button"));
 		js.executeScript("arguments[0].scrollIntoView(true);", scrollTo);
