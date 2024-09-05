@@ -56,7 +56,7 @@ public class AssignManage_Tags {
 		driver.findElement(By.xpath("//*[@name='tag_category']")).sendKeys("AB Testing");
 		driver.findElement(By.xpath("//*[@id=\"frmTagCategory\"]/div/button")).click();
         Thread.sleep(1000);
-		driver.findElement(By.xpath("/html/body/div[4]/div/div/div/div/div/div[2]/ul[6]/div/div/div[2]/span/a")).click();
+		driver.findElement(By.xpath("/html/body/div[4]/div/div/div/div/div/div[2]/ul[1]/div/div/div[2]/span/a")).click();
 		driver.findElement(By.xpath("//*[@name='tag_item']")).sendKeys("Testing 1");
 		driver.findElement(By.xpath("//*[@id=\"frmTagItem\"]/div/button")).click();
 		Thread.sleep(2000);
@@ -65,10 +65,13 @@ public class AssignManage_Tags {
 		// Assign Tags
 				
 		driver.findElement(By.xpath("//*[@id=\"table2_wrapper\"]/div[3]/div[3]/div[2]/div/table/tbody/tr[1]/td[2]/a/h2/i")).click();
-		driver.findElement(By.xpath("/html/body/div[4]/div/div/div/div/div/div/ul/li[7]/a")).click(); // Assign Tags
+		WebElement assessmentTest1 = driver.findElement(By.xpath("/html/body/div[4]/div/div/div/div/div/div/ul/li[21]/a"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollTop = arguments[0].scrollHeight;", assessmentTest1);
+        Thread.sleep(1000);
+        assessmentTest1.click(); // Assign Tags
 				
 		driver.findElement(By.xpath("//*[@placeholder='Search Tags']")).sendKeys("AB Testing");
-		WebElement tagChkbox = driver.findElement(By.xpath("//*[@id=\"assignTagsFrm\"]/div[1]/ul[6]/li[1]/label[1]/input"));
+		WebElement tagChkbox = driver.findElement(By.xpath("//*[@id=\"assignTagsFrm\"]/div[1]/ul[1]/li[1]/label[1]/input"));
 				
 		if(!tagChkbox.isSelected())
 			tagChkbox.click();
